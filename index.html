@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizGenius AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/fontawesome.min.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        QuizGenius AI
+    </div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Generator</a></li>
+    </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Study Smarter <br> with Artificial Intelligence</h1>
+        <p>Generate intelligent study questions instantly and improve your learning experience with AI.</p>
+        <a href="#generator" class="hero-btn">Start Generating</a>
+    </div>
+    <div class="hero-image-container">
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
+            alt="AI"
+            class="hero-image"
+        >
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="feature-card">
+        <i class="fa-solid fa-robot"></i>
+        <h3>AI Powered</h3>
+        <p>Smart question generation using modern AI logic.</p>
+    </div>
+    <div class="feature-card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Instant Results</h3>
+        <p>Generate study questions in seconds.</p>
+    </div>
+    <div class="feature-card">
+        <i class="fa-solid fa-book-open"></i>
+        <h3>Multiple Subjects</h3>
+        <p>Supports different subjects and learning topics.</p>
+    </div>
+</section>
+
+<!-- GENERATOR -->
+<section class="generator-section" id="generator">
+    <div class="container">
+        <h2>Generate Questions</h2>
+        <p class="subtitle">Enter a subject and topic below</p>
+
+        <form action="/generate" method="post">
+
+            <div class="input-group">
+                <label for="subject">
+                    <i class="fa-solid fa-book"></i>
+                </label>
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Enter Subject"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="topic">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </label>
+                <input
+                    type="text"
+                    id="topic"
+                    name="topic"
+                    placeholder="Enter Topic"
+                    required
+                >
+            </div>
+
+            <label for="difficulty">Difficulty</label>
+            <select name="difficulty" id="difficulty">
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+            </select>
+
+            <button type="submit">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Generate Questions
+            </button>
+
+        </form>
+
+        {% if questions %}
+        <div class="results">
+            <h2>Generated Questions</h2>
+            {% for question in questions %}
+            <div class="question-card">
+                {{ question }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <h3>QuizGenius AI</h3>
+        <p>AI-powered learning platform for smarter studying.</p>
+        <div class="socials">
+            <i class="fa-brands fa-github"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <!-- spell-checker: ignore -->
+        <p class="creator">Designed & Developed by Gracey</p>
+    </div>
+</footer>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
